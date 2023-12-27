@@ -34,7 +34,6 @@ const createGestureRecognizer = async () => {
     },
     runningMode: runningMode,
   });
-  demosSection.classList.remove("invisible");
 };
 createGestureRecognizer();
 /********************************************************************
@@ -44,6 +43,55 @@ const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas");
 const canvasCtx = canvasElement.getContext("2d");
 const gestureOutput = document.getElementById("gesture_output");
+const restartBtn = document.getElementById("restartButton");
+// load data
+const keywordValue = document.getElementById("keyword-value");
+const lessonParam = new URLSearchParams(window.location.search).get("lesson");
+const indexParam = new URLSearchParams(window.location.search).get(
+  "keywordIndex"
+);
+
+const dataKeywordLesson1 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const dataKeywordLesson2 = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+// load Keyword
+const loadKeyword = async () => {
+  console.log(Number(indexParam) + 1);
+
+  if (lessonParam == "1") {
+    keywordValue.innerHTML = dataKeywordLesson1[indexParam];
+  } else {
+    keywordValue.innerHTML = dataKeywordLesson2[indexParam];
+  }
+};
+loadKeyword();
+
 // Check if webcam access is supported.
 function hasGetUserMedia() {
   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -56,6 +104,11 @@ if (hasGetUserMedia()) {
 } else {
   console.warn("getUserMedia() is not supported by your browser");
 }
+function restart() {
+  window.location.reload(false);
+}
+restartBtn.addEventListener("click", restart);
+
 // Enable the live webcam view and start detection.
 function enableCam(event) {
   if (!gestureRecognizer) {
@@ -64,10 +117,13 @@ function enableCam(event) {
   }
   if (webcamRunning === true) {
     webcamRunning = false;
-    enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+    enableWebcamButton.innerText = "START LESSON";
+    window.location.href = `./question.html?lesson=${lessonParam}&keywordIndex=${
+      Number(indexParam) + 1
+    }`;
   } else {
     webcamRunning = true;
-    enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+    enableWebcamButton.innerText = "NEXT LESSON";
   }
   // getUsermedia parameters.
   const constraints = {
@@ -118,8 +174,8 @@ async function predictWebcam() {
   }
   canvasCtx.restore();
   if (results.gestures.length > 0) {
+    gestureOutput.style.width = 480;
     gestureOutput.style.display = "block";
-    gestureOutput.style.width = videoWidth;
     const categoryName = results.gestures[0][0].categoryName;
     const categoryScore = parseFloat(
       results.gestures[0][0].score * 100
@@ -132,8 +188,6 @@ async function predictWebcam() {
       realhandedness = "Left";
     }
     gestureOutput.innerText = `GestureRecognizer: ${categoryName}\n Confidence: ${categoryScore} %\n Handedness: ${realhandedness}`;
-  } else {
-    gestureOutput.style.display = "none";
   }
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {

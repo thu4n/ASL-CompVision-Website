@@ -29,11 +29,14 @@
       position: relative;
       width: 60%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     video {
       width: 100%;
       height: 100%;
+      padding: 10px 0;
     }
 
     canvas {
@@ -42,8 +45,18 @@
       left: 0;
       width: 100%;
       height: 100%;
+      padding: 10px 0;
     }
-
+    #gesture_output {
+      margin-top: 35px;
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 12px;
+      padding: 10px 0;
+      display: none;
+      width: 480px;
+      max-width: 480px;
+    }
     .control-panel {
       width: 30%;
       height: 100%;
@@ -56,27 +69,34 @@
       margin-left: 20px;
     }
 
-    .start-stop-button {
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1.2em;
-      padding: 10px 20px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #3498db; /* Set your desired background color */
-      color: #ffffff; /* Set your desired text color */
-      transition: background-color 0.3s ease;
-    }
-
-    .start-stop-button:hover {
-      background-color: #2980b9; /* Set your desired hover background color */
+    #webcamButton, #restartButton {
+      width: 180px;
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
 
     .prediction-data {
       text-align: center;
       font-size: 1.2em;
     }
+
+    #keyword-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    #keyword-title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    #keyword-value {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -100,16 +120,24 @@ limitations under the License. -->
   <div id="liveView" class="container">
     <div class="video-container">
       <video id="webcam" autoplay playsinline></video>
+      <div id="gesture_output" class="prediction-data"></div>
       <canvas class="output_canvas" id="output_canvas" width="720" height="400" style="position: absolute; left: 0px; top: 0px; right: 0; bottom: 0;"></canvas>
-      <p id='gesture_output' class="output">
     </div>
 
     <div class="control-panel">
       <div id="webcamButton" class="mdc-button mdc-button--raised">
         <span class="mdc-button__ripple"></span>
-        <span class="mdc-button__label">ENABLE WEBCAM</span>
+        <span class="mdc-button__label">START LESSON</span>
       </div>
-      <div id="predictionData" class="prediction-data"></div>
+      <div id="restartButton" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__label">RESTART LESSON</span>
+      </div>
+      <div id="keyword-container">
+        <div id="keyword-title">KEYWORK</div>
+        <div id="keyword-value"></div>
+      </div>
+      <img id="image-train" src="https://th.bing.com/th/id/R.8d1935cb434c7d837dfd5db987ff79d6?rik=qax7engcDW55Ig&pid=ImgRaw&r=0" alt="logo" width="250" height="250">
     </div>
   </div>
   

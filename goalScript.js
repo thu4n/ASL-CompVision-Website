@@ -24,6 +24,6 @@ function handleContinue() {
   if (!selectedLesson) {
     alert("Please select a lesson");
   } else {
-    window.location.href = `./question.html?lesson=${selectedLesson}`;
+    window.location.href = `./question.html?lesson=${selectedLesson}&keywordIndex=0`;
   }
 }
