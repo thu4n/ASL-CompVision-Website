@@ -5,7 +5,79 @@
   <title>CodePen - MediaPipe HandGestureRecognizer Task for web</title>
   
   <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #3498db; /* Set your desired background color */
+    }
 
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      height: 80%;
+    }
+
+    .video-container {
+      position: relative;
+      width: 60%;
+      height: 100%;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .control-panel {
+      width: 30%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff; /* Set your desired background color */
+      border-radius: 8px;
+      margin-left: 20px;
+    }
+
+    .start-stop-button {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db; /* Set your desired background color */
+      color: #ffffff; /* Set your desired text color */
+      transition: background-color 0.3s ease;
+    }
+
+    .start-stop-button:hover {
+      background-color: #2980b9; /* Set your desired hover background color */
+    }
+
+    .prediction-data {
+      text-align: center;
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -25,17 +97,22 @@ limitations under the License. -->
 <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
-  <div id="liveView" class="videoView">
-    <button id="webcamButton" class="mdc-button mdc-button--raised">
-      <span class="mdc-button__ripple"></span>
-      <span class="mdc-button__label">ENABLE WEBCAM</span>
-    </button>
-    <div style="position: relative;">
+  <div id="liveView" class="container">
+    <div class="video-container">
       <video id="webcam" autoplay playsinline></video>
-      <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
+      <canvas class="output_canvas" id="output_canvas" width="720" height="400" style="position: absolute; left: 0px; top: 0px; right: 0; bottom: 0;"></canvas>
       <p id='gesture_output' class="output">
     </div>
+
+    <div class="control-panel">
+      <div id="webcamButton" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__label">ENABLE WEBCAM</span>
+      </div>
+      <div id="predictionData" class="prediction-data"></div>
+    </div>
   </div>
+  
 </section>
 <!-- partial -->
 <script type="module" src="./script.js"></script>
