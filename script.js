@@ -9,43 +9,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// goal
-let selectedLesson = null;
-let lessonCards = document.querySelectorAll(".lesson-card");
-let videoElement = document.querySelector("webcam");
-
-function handleLessonSelect(lesson) {
-  if (selectedLesson === lesson) return;
-
-  selectedLesson = lesson;
-
-  // Remove checkmark from all cards
-  document.querySelectorAll(".lesson-card").forEach((card) => {
-    card.querySelector(".check-icon").style.display = "none";
-  });
-
-  // Display checkmark on selected card
-  const selectedCard = document.querySelector(
-    `[onclick="handleLessonSelect('${lesson}')"`
-  );
-  selectedCard.querySelector(".check-icon").style.display = "block";
-}
-
-function handleContinue() {
-  if (!selectedLesson) {
-    alert("Please select a lesson");
-  } else {
-    window.location.href = `/question.html`;
-  }
-}
-
-// question
 import {
   GestureRecognizer,
   FilesetResolver,
   DrawingUtils,
 } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
-const demosSection = document.getElementById("demos");
 let gestureRecognizer;
 let runningMode = "IMAGE";
 let enableWebcamButton;
