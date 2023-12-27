@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Pick a Lesson</title>
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background-color: #6db2ff; /* Change this to your desired background color */
+      color: #ffffff; /* Change this to your desired text color */
+      flex-direction: column;
+    }
+
+    .lesson-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .title {
+        font-size: 40px;
+    }
+    .lesson-card {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 20px;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      position: relative;
+      color:#000000;
+    }
+
+    .lesson-card:hover {
+      background-color: #f0f0f0;
+    }
+    .info-lesson-card {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .lesson-card .lesson-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .lesson-card .lesson-description {
+      font-size: 1em;
+    }
+
+    .check-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
+      padding: 8px;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .continue-btn {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #6db2ff;
+      padding: 10px 25px;
+      margin-top: 30px;
+      border-radius: 50px;
+      width: 300px;
+      text-align: center;
+      background-color: #ffffff; 
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="lesson-container">
+    <h1 class="title">Pick a lesson</h1>
+
+    <!-- Lesson 1 content -->
+    <div class="lesson-card" onclick="handleLessonSelect('1')">
+      <div class="info-lesson-card">
+          <div class="lesson-title">Numbers</div>
+          <div class="lesson-description">You will learn about numbers.</div>
+      </div>
+      <img class="check-icon" src="../assets/check.png" alt="Check icon" width="40px" height="auto"/>
+    </div>
+
+    <!-- Repeat similar structures for other lesson options -->
+
+    <div class="lesson-card" onclick="handleLessonSelect('2')">
+        <div class="info-lesson-card">
+            <div class="lesson-title">Letters</div>
+            <div class="lesson-description">You will learn about Alphabet.</div>
+        </div>
+        <img class="check-icon" src="../assets/check.png" alt="Check icon" width="40px" height="auto"/>
+      </div>
+
+    <div class="continue-btn" onclick="handleContinue()">Continue</div>
+  </div>
+
+  <script src="../src/script.js"></script>
+</body>
+</html>
