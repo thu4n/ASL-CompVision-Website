@@ -43,6 +43,7 @@ const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas");
 const canvasCtx = canvasElement.getContext("2d");
 const gestureOutput = document.getElementById("gesture_output-container");
+const nextBtn = document.getElementById("nextButton");
 const restartBtn = document.getElementById("restartButton");
 // load data
 const keywordValue = document.getElementById("keyword-value");
@@ -104,13 +105,16 @@ if (hasGetUserMedia()) {
 } else {
   console.warn("getUserMedia() is not supported by your browser");
 }
-function restart() {
+function nextLesson() {
   window.location.href = `./question.html?lesson=${lessonParam}&keywordIndex=${
     Number(indexParam) + 1
   }`;
 }
-restartBtn.addEventListener("click", restart);
-
+nextBtn.addEventListener("click", nextLesson);
+function restartLesson() {
+  window.location.reload(false);
+}
+restartBtn.addEventListener("click", restartLesson);
 // Enable the live webcam view and start detection.
 function enableCam(event) {
   if (!gestureRecognizer) {
@@ -187,13 +191,18 @@ async function predictWebcam() {
       realhandedness = "Left";
     }
 
-    if (categoryScore > 90 && categoryName == keywordValue.innerHTML) {
-      restartBtn.style.display = "flex";
+    if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
+      nextBtn.style.display = "flex";
+      gestureOutput.innerText = "SAI";
+    } else {
+      gestureOutput.innerText = "SAI";
     }
     console.log(categoryName == keywordValue.innerHTML);
     console.log(keywordValue.innerHTML);
     console.log(categoryName);
-    gestureOutput.innerText = `GestureRecognizer: ${categoryName}\n Confidence: ${categoryScore} %\n Handedness: ${realhandedness}`;
+    if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
+      nextBtn.style.display = "flex";
+    }
   }
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {
