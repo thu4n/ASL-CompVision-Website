@@ -51,8 +51,9 @@ const lessonParam = new URLSearchParams(window.location.search).get("lesson");
 const indexParam = new URLSearchParams(window.location.search).get(
   "keywordIndex"
 );
-
 const dataKeywordLesson1 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+console.log(dataKeywordLesson1[dataKeywordLesson1.length - 1]);
+
 const dataKeywordLesson2 = [
   "a",
   "b",
@@ -83,8 +84,6 @@ const dataKeywordLesson2 = [
 ];
 // load Keyword
 const loadKeyword = async () => {
-  console.log(Number(indexParam) + 1);
-
   if (lessonParam == "1") {
     keywordValue.innerHTML = dataKeywordLesson1[indexParam];
   } else {
@@ -109,6 +108,16 @@ function nextLesson() {
   window.location.href = `./question.html?lesson=${lessonParam}&keywordIndex=${
     Number(indexParam) + 1
   }`;
+  if (lessonParam == "1") {
+    if (indexParam == dataKeywordLesson1.length - 1) {
+      window.location.href = `./goal.html`;
+    }
+  }
+  if (lessonParam == "2") {
+    if (indexParam == dataKeywordLesson2.length - 1) {
+      window.location.href = `./goal.html`;
+    }
+  }
 }
 nextBtn.addEventListener("click", nextLesson);
 function restartLesson() {
@@ -193,7 +202,7 @@ async function predictWebcam() {
 
     if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
-      gestureOutput.innerText = "SAI";
+      gestureOutput.innerText = "ĐÚNG";
     } else {
       gestureOutput.innerText = "SAI";
     }
