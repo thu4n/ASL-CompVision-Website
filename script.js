@@ -42,7 +42,7 @@ Grab image from webcam stream and detect it.
 const video = document.getElementById("webcam");
 const canvasElement = document.getElementById("output_canvas");
 const canvasCtx = canvasElement.getContext("2d");
-const gestureOutput = document.getElementById("gesture_output");
+const gestureOutput = document.getElementById("gesture_output-container");
 const restartBtn = document.getElementById("restartButton");
 // load data
 const keywordValue = document.getElementById("keyword-value");
@@ -53,32 +53,32 @@ const indexParam = new URLSearchParams(window.location.search).get(
 
 const dataKeywordLesson1 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const dataKeywordLesson2 = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
 ];
 // load Keyword
 const loadKeyword = async () => {
@@ -105,7 +105,9 @@ if (hasGetUserMedia()) {
   console.warn("getUserMedia() is not supported by your browser");
 }
 function restart() {
-  window.location.reload(false);
+  window.location.href = `./question.html?lesson=${lessonParam}&keywordIndex=${
+    Number(indexParam) + 1
+  }`;
 }
 restartBtn.addEventListener("click", restart);
 
@@ -118,12 +120,9 @@ function enableCam(event) {
   if (webcamRunning === true) {
     webcamRunning = false;
     enableWebcamButton.innerText = "START LESSON";
-    window.location.href = `./question.html?lesson=${lessonParam}&keywordIndex=${
-      Number(indexParam) + 1
-    }`;
   } else {
     webcamRunning = true;
-    enableWebcamButton.innerText = "NEXT LESSON";
+    enableWebcamButton.innerText = "STOP LESSON";
   }
   // getUsermedia parameters.
   const constraints = {
@@ -187,6 +186,13 @@ async function predictWebcam() {
     } else {
       realhandedness = "Left";
     }
+
+    if (categoryScore > 90 && categoryName == keywordValue.innerHTML) {
+      restartBtn.style.display = "flex";
+    }
+    console.log(categoryName == keywordValue.innerHTML);
+    console.log(keywordValue.innerHTML);
+    console.log(categoryName);
     gestureOutput.innerText = `GestureRecognizer: ${categoryName}\n Confidence: ${categoryScore} %\n Handedness: ${realhandedness}`;
   }
   // Call this function again to keep predicting when the browser is ready.

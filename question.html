@@ -47,7 +47,7 @@
       height: 100%;
       padding: 10px 0;
     }
-    #gesture_output {
+    #gesture_output-container {
       margin-top: 35px;
       background-color: #ffffff;
       color: #000000;
@@ -69,12 +69,17 @@
       margin-left: 20px;
     }
 
-    #webcamButton, #restartButton {
+    #webcamButton {
       width: 180px;
       margin-top: 5px;
       margin-bottom: 5px;
     }
-
+    #restartButton {
+      width: 180px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      display: none;
+    }
     .prediction-data {
       text-align: center;
       font-size: 1.2em;
@@ -95,6 +100,7 @@
     #keyword-value {
       font-size: 2em;
       font-weight: bold;
+      text-transform: uppercase;
     }
 
   </style>
@@ -120,7 +126,9 @@ limitations under the License. -->
   <div id="liveView" class="container">
     <div class="video-container">
       <video id="webcam" autoplay playsinline></video>
-      <div id="gesture_output" class="prediction-data"></div>
+      <div id="gesture_output-container" class="prediction-data">
+        <div></div>
+      </div>
       <canvas class="output_canvas" id="output_canvas" width="720" height="400" style="position: absolute; left: 0px; top: 0px; right: 0; bottom: 0;"></canvas>
     </div>
 
@@ -131,7 +139,7 @@ limitations under the License. -->
       </div>
       <div id="restartButton" class="mdc-button mdc-button--raised">
         <span class="mdc-button__ripple"></span>
-        <span class="mdc-button__label">RESTART LESSON</span>
+        <span class="mdc-button__label">NEXT LESSON</span>
       </div>
       <div id="keyword-container">
         <div id="keyword-title">KEYWORK</div>
