@@ -221,43 +221,43 @@ async function predictWebcam() {
     }
     gestureOutput.innerText = `Current sign: ${categoryName}\n`
     gestureOutput.innerText += `Confidence of the model: ${categoryScore}\n`
-    if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
+    if (categoryScore > 70 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
       gestureOutput.innerText += "CORRECT";
     }
-    else if(categoryScore > 60 && categoryName == keywordValue.innerHTML){
+    else if(categoryScore > 70 && categoryName == keywordValue.innerHTML){
       gestureOutput.innerText += "YOU'RE ALMOST THERE";
     } 
     else if(keywordValue.innerHTML == "2" || keywordValue.innerHTML == "v"){
-      if ((categoryScore > 80 && categoryName == "2") || (categoryScore > 80 && categoryName == "v")){
+      if ((categoryScore > 70 && categoryName == "2") || (categoryScore > 70 && categoryName == "v")){
         nextBtn.style.display = "flex";
         gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '2' and 'v' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "6" || keywordValue.innerHTML == "w"){
-      if ((categoryScore > 80 && categoryName == "6") || (categoryScore > 80 && categoryName == "w")){
+      if ((categoryScore > 70 && categoryName == "6") || (categoryScore > 70 && categoryName == "w")){
         nextBtn.style.display = "flex";
         gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '6' and 'w' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "0" || keywordValue.innerHTML == "o"){
-      if ((categoryScore > 80 && categoryName == "0") || (categoryScore > 80 && categoryName == "o")){
+      if ((categoryScore > 70 && categoryName == "0") || (categoryScore > 70 && categoryName == "o")){
         nextBtn.style.display = "flex";
         gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '0' and 'o' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "9" || keywordValue.innerHTML == "f"){
-      if ((categoryScore > 80 && categoryName == "9") || (categoryScore > 80 && categoryName == "f")){
+      if ((categoryScore > 70 && categoryName == "9") || (categoryScore > 70 && categoryName == "f")){
         nextBtn.style.display = "flex";
         gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '9' and 'f' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "1" || keywordValue.innerHTML == "d"){
-      if ((categoryScore > 80 && categoryName == "1") || (categoryScore > 80 && categoryName == "d")){
+      if ((categoryScore > 70 && categoryName == "1") || (categoryScore > 70 && categoryName == "d")){
         nextBtn.style.display = "flex";
         gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '1' and 'd' are identical`;
@@ -269,7 +269,7 @@ async function predictWebcam() {
     console.log(categoryName == keywordValue.innerHTML);
     console.log(keywordValue.innerHTML);
     console.log(categoryName);
-    if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
+    if (categoryScore > 70 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
     }
   }

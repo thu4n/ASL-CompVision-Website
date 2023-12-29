@@ -9,5 +9,3 @@ The notebook for training the model is also included in this repo, [click here t
 More details will be added later...
 
 
-
-
