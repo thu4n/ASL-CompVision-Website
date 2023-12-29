@@ -132,7 +132,7 @@ function nextLesson() {
 nextBtn.addEventListener("click", nextLesson);
 
 function returnHome(){
-  window.location.href = `/`;
+  window.location.href = `./index.html`;
 }
 homeBtn.addEventListener("click",returnHome);
 
