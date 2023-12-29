@@ -101,6 +101,7 @@ const loadImg = async () =>{
 }
 loadImg();
 
+
 // Check if webcam access is supported.
 function hasGetUserMedia() {
   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -131,10 +132,12 @@ function nextLesson() {
 }
 nextBtn.addEventListener("click", nextLesson);
 
+// Home button in question page
 function returnHome(){
   window.location.assign("https://thu4n.dev/ASL-CompVision-Website");
 }
 homeBtn.addEventListener("click",returnHome);
+
 
 function restartLesson() {
   window.location.reload(false);
