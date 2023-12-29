@@ -45,6 +45,7 @@ const canvasCtx = canvasElement.getContext("2d");
 const gestureOutput = document.getElementById("gesture_output-container");
 const nextBtn = document.getElementById("nextButton");
 const restartBtn = document.getElementById("restartButton");
+const homeBtn = document.getElementById("homeButton");
 const imageTrain = document.getElementById("image-train");
 // load data
 const keywordValue = document.getElementById("keyword-value");
@@ -112,6 +113,7 @@ if (hasGetUserMedia()) {
 } else {
   console.warn("getUserMedia() is not supported by your browser");
 }
+
 function nextLesson() {
   window.location.href = `./question.html?lesson=${lessonParam}&keywordIndex=${
     Number(indexParam) + 1
@@ -128,10 +130,17 @@ function nextLesson() {
   }
 }
 nextBtn.addEventListener("click", nextLesson);
+
+function returnHome(){
+  window.location.href = `/`;
+}
+homeBtn.addEventListener("click",returnHome);
+
 function restartLesson() {
   window.location.reload(false);
 }
 restartBtn.addEventListener("click", restartLesson);
+
 // Enable the live webcam view and start detection.
 function enableCam(event) {
   if (!gestureRecognizer) {

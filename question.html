@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Learning ASL</title>
@@ -14,7 +15,8 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #3498db; /* Set your desired background color */
+      background-color: #3498db;
+      /* Set your desired background color */
     }
 
     .container {
@@ -47,6 +49,7 @@
       height: 100%;
       padding: 10px 0;
     }
+
     #gesture_output-container {
       margin-top: 35px;
       background-color: #ffffff;
@@ -57,6 +60,7 @@
       width: 480px;
       max-width: 480px;
     }
+
     .control-panel {
       width: 30%;
       height: 100%;
@@ -64,22 +68,26 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #ffffff; /* Set your desired background color */
+      background-color: #ffffff;
+      /* Set your desired background color */
       border-radius: 8px;
       margin-left: 20px;
     }
 
-    #webcamButton, #restartButton {
+    #webcamButton,
+    #restartButton {
       width: 180px;
       margin-top: 5px;
       margin-bottom: 5px;
     }
+
     #nextButton {
       width: 180px;
       margin-top: 5px;
       margin-bottom: 5px;
       display: none;
     }
+
     .prediction-data {
       text-align: center;
       font-size: 1.2em;
@@ -93,21 +101,23 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
+
     #keyword-title {
       font-size: 1.2em;
       font-weight: bold;
     }
+
     #keyword-value {
       font-size: 2em;
       font-weight: bold;
       text-transform: uppercase;
     }
-
   </style>
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<!-- Copyright 2023 The MediaPipe Authors.
+  <!-- partial:index.partial.html -->
+  <!-- Copyright 2023 The MediaPipe Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -120,8 +130,9 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. -->
-<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <div id="liveView" class="container">
     <div class="video-container">
@@ -129,7 +140,8 @@ limitations under the License. -->
       <div id="gesture_output-container" class="prediction-data">
         <div></div>
       </div>
-      <canvas class="output_canvas" id="output_canvas" width="720" height="400" style="position: absolute; left: 0px; top: 0px; right: 0; bottom: 0;"></canvas>
+      <canvas class="output_canvas" id="output_canvas" width="720" height="400"
+        style="position: absolute; left: 0px; top: 0px; right: 0; bottom: 0;"></canvas>
     </div>
 
     <div class="control-panel">
@@ -146,17 +158,25 @@ limitations under the License. -->
         <div id="keyword-value"></div>
       </div>
       <img id="image-train" src="assets/asl_Logo_2.png" alt="logo" width="250" height="250">
-      <div><p></p></div>
+      <div>
+        <p></p>
+      </div>
       <div id="nextButton" class="mdc-button mdc-button--raised">
         <span class="mdc-button__ripple"></span>
         <span class="mdc-button__label">NEXT LESSON</span>
       </div>
+      <div id="homeButton" class="mdc-button">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">home</i>
+        <span class="mdc-button__label">HOME</span>
+      </div>
     </div>
   </div>
-  
-</section>
-<!-- partial -->
-<script type="module" src="./script.js"></script>
+
+  </section>
+  <!-- partial -->
+  <script type="module" src="./script.js"></script>
 
 </body>
+
 </html>
