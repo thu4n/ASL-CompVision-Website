@@ -215,28 +215,28 @@ async function predictWebcam() {
     else if(keywordValue.innerHTML == "6" || keywordValue.innerHTML == "w"){
       if ((categoryScore > 80 && categoryName == "6") || (categoryScore > 80 && categoryName == "w")){
         nextBtn.style.display = "flex";
-        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '6' and 'w' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "0" || keywordValue.innerHTML == "o"){
       if ((categoryScore > 80 && categoryName == "0") || (categoryScore > 80 && categoryName == "o")){
         nextBtn.style.display = "flex";
-        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '0' and 'o' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "9" || keywordValue.innerHTML == "f"){
       if ((categoryScore > 80 && categoryName == "9") || (categoryScore > 80 && categoryName == "f")){
         nextBtn.style.display = "flex";
-        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '9' and 'f' are identical`;
       }
     }
     else if(keywordValue.innerHTML == "1" || keywordValue.innerHTML == "d"){
       if ((categoryScore > 80 && categoryName == "1") || (categoryScore > 80 && categoryName == "d")){
         nextBtn.style.display = "flex";
-        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += "CORRECT\n";
         gestureOutput.innerText += `\nNote: The signs for '1' and 'd' are identical`;
       }
     }
