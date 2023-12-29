@@ -225,7 +225,7 @@ async function predictWebcam() {
       nextBtn.style.display = "flex";
       gestureOutput.innerText += "CORRECT";
     }
-    else if(categoryScore > 70 && categoryName == keywordValue.innerHTML){
+    else if(categoryScore > 50 && categoryName == keywordValue.innerHTML){
       gestureOutput.innerText += "YOU'RE ALMOST THERE";
     } 
     else if(keywordValue.innerHTML == "2" || keywordValue.innerHTML == "v"){
@@ -269,9 +269,9 @@ async function predictWebcam() {
     console.log(categoryName == keywordValue.innerHTML);
     console.log(keywordValue.innerHTML);
     console.log(categoryName);
-    if (categoryScore > 70 && categoryName == keywordValue.innerHTML) {
+    /*if (categoryScore > 70 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
-    }
+    }*/
   }
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {
