@@ -45,6 +45,7 @@ const canvasCtx = canvasElement.getContext("2d");
 const gestureOutput = document.getElementById("gesture_output-container");
 const nextBtn = document.getElementById("nextButton");
 const restartBtn = document.getElementById("restartButton");
+const imageTrain = document.getElementById("image-train");
 // load data
 const keywordValue = document.getElementById("keyword-value");
 const lessonParam = new URLSearchParams(window.location.search).get("lesson");
@@ -92,6 +93,13 @@ const loadKeyword = async () => {
 };
 loadKeyword();
 
+// load the image for the keyword
+const loadImg = async () =>{
+  var imgName = keywordValue.innerHTML;
+  imageTrain.src = `assets/` + imgName + `.png`;
+}
+loadImg();
+
 // Check if webcam access is supported.
 function hasGetUserMedia() {
   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -127,7 +135,7 @@ restartBtn.addEventListener("click", restartLesson);
 // Enable the live webcam view and start detection.
 function enableCam(event) {
   if (!gestureRecognizer) {
-    alert("Please wait for gestureRecognizer to load");
+    alert("Please wait for the model to load");
     return;
   }
   if (webcamRunning === true) {
@@ -199,8 +207,8 @@ async function predictWebcam() {
     } else {
       realhandedness = "Left";
     }
-    gestureOutput.innerText = `Current gesture: ${categoryName}\n`
-    gestureOutput.innerText += `Confidence for the current gesture: ${categoryScore}\n`
+    gestureOutput.innerText = `Current sign: ${categoryName}\n`
+    gestureOutput.innerText += `Confidence of the model: ${categoryScore}\n`
     if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
       gestureOutput.innerText += "CORRECT";
