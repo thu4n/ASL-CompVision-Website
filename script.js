@@ -221,6 +221,9 @@ async function predictWebcam() {
     if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
       gestureOutput.innerText += "CORRECT";
+    }
+    else if(categoryScore > 60 && categoryName == keywordValue.innerHTML){
+      gestureOutput.innerText += "YOU'RE ALMOST THERE";
     } 
     else if(keywordValue.innerHTML == "2" || keywordValue.innerHTML == "v"){
       if ((categoryScore > 80 && categoryName == "2") || (categoryScore > 80 && categoryName == "v")){
