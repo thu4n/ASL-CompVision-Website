@@ -199,12 +199,49 @@ async function predictWebcam() {
     } else {
       realhandedness = "Left";
     }
-
+    gestureOutput.innerText = `Current gesture: ${categoryName}\n`
+    gestureOutput.innerText += `Confidence for the current gesture: ${categoryScore}\n`
     if (categoryScore > 80 && categoryName == keywordValue.innerHTML) {
       nextBtn.style.display = "flex";
-      gestureOutput.innerText = "ĐÚNG";
-    } else {
-      gestureOutput.innerText = "SAI";
+      gestureOutput.innerText += "CORRECT";
+    } 
+    else if(keywordValue.innerHTML == "2" || keywordValue.innerHTML == "v"){
+      if ((categoryScore > 80 && categoryName == "2") || (categoryScore > 80 && categoryName == "v")){
+        nextBtn.style.display = "flex";
+        gestureOutput.innerText += "CORRECT\n";
+        gestureOutput.innerText += `\nNote: The signs for '2' and 'v' are identical`;
+      }
+    }
+    else if(keywordValue.innerHTML == "6" || keywordValue.innerHTML == "w"){
+      if ((categoryScore > 80 && categoryName == "6") || (categoryScore > 80 && categoryName == "w")){
+        nextBtn.style.display = "flex";
+        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += `\nNote: The signs for '6' and 'w' are identical`;
+      }
+    }
+    else if(keywordValue.innerHTML == "0" || keywordValue.innerHTML == "o"){
+      if ((categoryScore > 80 && categoryName == "0") || (categoryScore > 80 && categoryName == "o")){
+        nextBtn.style.display = "flex";
+        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += `\nNote: The signs for '0' and 'o' are identical`;
+      }
+    }
+    else if(keywordValue.innerHTML == "9" || keywordValue.innerHTML == "f"){
+      if ((categoryScore > 80 && categoryName == "9") || (categoryScore > 80 && categoryName == "f")){
+        nextBtn.style.display = "flex";
+        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += `\nNote: The signs for '9' and 'f' are identical`;
+      }
+    }
+    else if(keywordValue.innerHTML == "1" || keywordValue.innerHTML == "d"){
+      if ((categoryScore > 80 && categoryName == "1") || (categoryScore > 80 && categoryName == "d")){
+        nextBtn.style.display = "flex";
+        gestureOutput.innerText += "CORRECT";
+        gestureOutput.innerText += `\nNote: The signs for '1' and 'd' are identical`;
+      }
+    }
+    else {
+      gestureOutput.innerText += "INCORRECT\n";
     }
     console.log(categoryName == keywordValue.innerHTML);
     console.log(keywordValue.innerHTML);
