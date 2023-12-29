@@ -132,7 +132,7 @@ function nextLesson() {
 nextBtn.addEventListener("click", nextLesson);
 
 function returnHome(){
-  window.location.href = `./index.html`;
+  window.location.href = `./ASL-CompVision-Website`;
 }
 homeBtn.addEventListener("click",returnHome);
 
